@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
     <head>
-        <title>{{ trans('home.title') }}</title>
+        <title>@lang('home.title')</title>
 
         {{ Html::style(asset('css/app.css')) }}
     </head>
