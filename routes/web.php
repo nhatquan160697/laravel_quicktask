@@ -19,7 +19,12 @@ Route::post('/', [
     'uses' => 'TaskController@createTask',
     'as' => 'tasks'
 ]);
+
 Route::delete('/del/{id}', [
     'uses' => 'TaskController@deleteTask',
     'as' => 'deleteTasks'
 ]);
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
