@@ -28,4 +28,16 @@ class TaskController extends Controller
         $task->save();
         return redirect(route('tasks'))->with('success',trans('home.create_success'));
     }
+
+    public function deleteTask($id)
+    {
+        try {
+            $task = Task::findOrFail($id);
+            $task->delete();
+            return redirect()->route('tasks')->with('msgDelete',trans('home.delete_success'));
+        } catch (Exception $exception) {
+            return redirect()->route('tasks')->with('msgDelete',trans('home.delete_failed'));
+        }
+    }
+
 }

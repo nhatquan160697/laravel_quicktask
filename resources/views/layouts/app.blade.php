@@ -16,5 +16,6 @@
         @yield('content')
 
         {{ Html::script(asset('js/app.js')) }}
+        {{ Html::script(asset('js/tasks.js')) }}
     </body>
 </html>

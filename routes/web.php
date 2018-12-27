@@ -19,3 +19,7 @@ Route::post('/', [
     'uses' => 'TaskController@createTask',
     'as' => 'tasks'
 ]);
+Route::delete('/del/{id}', [
+    'uses' => 'TaskController@deleteTask',
+    'as' => 'deleteTasks'
+]);
