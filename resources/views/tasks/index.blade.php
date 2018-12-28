@@ -6,7 +6,7 @@
 
         @include('common.errors')
 
-        {!! Form::open(['method'=>'POST', 'routes'=>'tasks' , 'class'=>'form-horizontal']) !!}
+        {!! Form::open(['method'=>'POST', 'route'=>'tasks' , 'class'=>'form-horizontal']) !!}
             <div class="form-group">
                 {!! Form::label('task-name', trans('home.lb_taskName'), ['class'=>'col-sm-3 control-label']) !!}
 
@@ -44,6 +44,12 @@
                             <th>&nbsp;</th>
                         </thead>
 
+                        @if (session('msgDelete'))
+                            <script type="text/javascript" charset="utf-8">
+                                alert("{{ session('msgDelete') }}");
+                            </script>
+                        @endif
+
                         <tbody>
                             @foreach ($displayTasks as $task)
                                 <tr>
@@ -52,7 +58,11 @@
                                     </td>
 
                                     <td>
-                                        <!-- TODO: Delete Button -->
+                                        {!! Form::open(['method'=>'DELETE',
+                                                        'route' => ['deleteTasks', $task->id]]) !!}
+                                            {!! Form::submit(trans('home.btn_deleteTask'), ['class'=>'btn btn-danger',
+                                            'data-confirm' => trans('home.confirm_delete')]) !!}
+                                        {!! Form::close() !!}
                                     </td>
                                 </tr>
                             @endforeach
