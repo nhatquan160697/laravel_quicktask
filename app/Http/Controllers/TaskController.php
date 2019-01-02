@@ -8,6 +8,11 @@ use App\Models\Task;
 
 class TaskController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a list of all of the user's task.
      *
